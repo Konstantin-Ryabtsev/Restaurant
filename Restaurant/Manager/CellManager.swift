@@ -18,35 +18,22 @@ class CellManager {
     
     func configure(_ cell: UITableViewCell, with menuItem: MenuItem, for tableView: UITableView, indexPath: IndexPath) {
         cell.textLabel?.text = menuItem.name
-        cell.detailTextLabel?.text = String(format: "$%.2f", menuItem.price)
+        cell.detailTextLabel?.text = menuItem.formattedPrice
         
-        guard cell.imageView?.image == nil else { return }
-        networkManager.getImage(menuItem.imageURL) { image, error in
-            if let error = error {
-                print(#line, #function, "ERROR:", error.localizedDescription)
-            }
-            DispatchQueue.main.async {
-                cell.imageView?.image = image
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-        }
-        
-        /*
-        var content = cell.defaultContentConfiguration()
-        content.text = menuItem.name
-        content.secondaryText = String(format: "$%.2f", menuItem.price)
-        
-        networkManager.getImage(menuItem.imageURL) { image, error in
-            if let error = error {
-                print(#line, #function, "ERROR:", error.localizedDescription)
-            }
-            DispatchQueue.main.async {
-                content.image = image
-                tableView?.reloadData()
+        if let image = menuItem.image {
+            cell.imageView?.image = image
+        } else {
+            networkManager.getImage(menuItem.imageURL) { image, error in
+                if let error = error {
+                    print(#line, #function, "ERROR:", error.localizedDescription)
+                }
+                if let image = image {
+                    menuItem.image = image
+                    DispatchQueue.main.async {
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
             }
         }
-        
-        cell.contentConfiguration = content
-        */
     }
 }

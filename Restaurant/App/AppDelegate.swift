@@ -9,11 +9,22 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    var window: UIWindow?
+    var orderTabBarItem: UITabBarItem!
+    
+    @objc func updateOrderBadge() {
+        let count = OrderManager.shared.order.menuItems.count
+        orderTabBarItem.badgeValue = 0 < count ? ("\(count)") : nil
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let tabBarController = window!.rootViewController as! UITabBarController
+        orderTabBarItem = tabBarController.viewControllers![1].tabBarItem
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateOrderBadge), name: OrderManager.orderUpdatedNotification, object: nil)
+        
         return true
     }
 
