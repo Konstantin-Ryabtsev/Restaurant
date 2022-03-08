@@ -11,6 +11,9 @@
 		0A33BA5027D6BAF7000DD3F6 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA4F27D6BAF7000DD3F6 /* OrderTableViewController.swift */; };
 		0A33BA5227D6BB52000DD3F6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5127D6BB52000DD3F6 /* Order.swift */; };
 		0A33BA5427D6BDAE000DD3F6 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5327D6BDAE000DD3F6 /* OrderManager.swift */; };
+		0A33BA5627D7BCC6000DD3F6 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5527D7BCC6000DD3F6 /* OrderConfirmationViewController.swift */; };
+		0A33BA5827D7BFC9000DD3F6 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5727D7BFC9000DD3F6 /* Double+Extension.swift */; };
+		0A33BA5A27D7C685000DD3F6 /* PreparationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5927D7C685000DD3F6 /* PreparationTime.swift */; };
 		0AD11BF327CD9723006D1236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD11BF227CD9723006D1236 /* AppDelegate.swift */; };
 		0AD11BF527CD9723006D1236 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD11BF427CD9723006D1236 /* SceneDelegate.swift */; };
 		0AD11BFA27CD9723006D1236 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD11BF827CD9723006D1236 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 		0A33BA4F27D6BAF7000DD3F6 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		0A33BA5127D6BB52000DD3F6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0A33BA5327D6BDAE000DD3F6 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
+		0A33BA5527D7BCC6000DD3F6 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		0A33BA5727D7BFC9000DD3F6 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		0A33BA5927D7C685000DD3F6 /* PreparationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationTime.swift; sourceTree = "<group>"; };
 		0AD11BEF27CD9723006D1236 /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD11BF227CD9723006D1236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AD11BF427CD9723006D1236 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,8 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				0AD11C1027CDA21D006D1236 /* CategoryTableViewController.swift */,
-				0AD11C1B27CDAD3D006D1236 /* MenuTableViewController.swift */,
 				0A33BA4D27D6B4CE000DD3F6 /* ItemViewController.swift */,
+				0AD11C1B27CDAD3D006D1236 /* MenuTableViewController.swift */,
+				0A33BA5527D7BCC6000DD3F6 /* OrderConfirmationViewController.swift */,
 				0A33BA4F27D6BAF7000DD3F6 /* OrderTableViewController.swift */,
 			);
 			path = Controllers;
@@ -134,6 +141,7 @@
 				0AD11C1427CDA876006D1236 /* MenuItem.swift */,
 				0AD11C1627CDA895006D1236 /* MenuItems.swift */,
 				0A33BA5127D6BB52000DD3F6 /* Order.swift */,
+				0A33BA5927D7C685000DD3F6 /* PreparationTime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0AD11C1927CDAB6A006D1236 /* URL+Extension.swift */,
+				0A33BA5727D7BFC9000DD3F6 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,7 +240,10 @@
 				0AD11C1C27CDAD3D006D1236 /* MenuTableViewController.swift in Sources */,
 				0AD11C1527CDA876006D1236 /* MenuItem.swift in Sources */,
 				0AD11C1727CDA895006D1236 /* MenuItems.swift in Sources */,
+				0A33BA5A27D7C685000DD3F6 /* PreparationTime.swift in Sources */,
+				0A33BA5827D7BFC9000DD3F6 /* Double+Extension.swift in Sources */,
 				0A33BA5427D6BDAE000DD3F6 /* OrderManager.swift in Sources */,
+				0A33BA5627D7BCC6000DD3F6 /* OrderConfirmationViewController.swift in Sources */,
 				0A33BA5027D6BAF7000DD3F6 /* OrderTableViewController.swift in Sources */,
 				0AD11C0F27CD9ED9006D1236 /* NetworkManager.swift in Sources */,
 				0AD11C1327CDA6C1006D1236 /* CellManager.swift in Sources */,
