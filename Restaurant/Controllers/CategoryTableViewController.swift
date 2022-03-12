@@ -12,7 +12,7 @@ class CategoryTableViewController: UITableViewController {
     //MARK: - Properties
     let cellManager = CellManager()
     let networkManager = NetworkManager()
-    var categories = [String]()
+    private var categories = [String]()
     
     // MARK: - UIViewController Methods
     override func viewDidLoad() {

@@ -13,7 +13,7 @@ class MenuTableViewController: UITableViewController {
     let cellManager = CellManager()
     let networkManager = NetworkManager()
     var category: String!
-    var menuItems = [MenuItem]()
+    private var menuItems = [MenuItem]()
     
     // MARK: - UIViewController Methods
     override func viewDidLoad() {

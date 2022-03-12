@@ -12,13 +12,23 @@ class OrderTableViewController: UITableViewController {
     let cellManager = CellManager()
     let networkManager = NetworkManager()
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var submitButton: UIBarButtonItem!
+    
     // MARK: - Stored Properties
-    var minutes = 0
+    private var minutes = 0
     
     // MARK: - UITableViewController Mehods
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateUI()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: OrderManager.orderUpdatedNotification, object: nil)
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     // MARK: - Navigation
@@ -32,10 +42,11 @@ class OrderTableViewController: UITableViewController {
         OrderManager.shared.order = Order()
     }
     
-    // TODO: Add editing: canEditRowAt and commitEditingStyle
-    // TODO: Check not null order
-    
     // MARK: - Custom Methods
+    func updateUI() {
+        submitButton.isEnabled = OrderManager.shared.order.menuItems.count > 0
+    }
+    
     func uploadOrder() {
         let menuIds = OrderManager.shared.order.menuItems.map { $0.id }
         networkManager.submitOrder(forMenuIds: menuIds) { minutes, error in
@@ -50,8 +61,7 @@ class OrderTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "OrderConfirmationSegue", sender: nil)
                 }
-            }
-        }
+            }	        }
     }
     
     // MARK: - Actions
@@ -81,5 +91,30 @@ extension OrderTableViewController /*: UITableViewDataSource */ {
         let menuItem = OrderManager.shared.order.menuItems[indexPath.row]
         cellManager.configure(cell, with: menuItem, for: tableView, indexPath: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            tableView.beginUpdates()
+            OrderManager.shared.order.menuItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            updateUI()
+        case .none:
+            break
+        case .insert:
+            break
+        @unknown default:
+            print(#line, #function, "Unknown case in file \(#file)")
+            break
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension OrderTableViewController /*: UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
 }

@@ -114,6 +114,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="submitButton" destination="Qoe-rq-P67" id="HXO-bl-zDX"/>
                         <segue destination="Lal-tN-G5A" kind="show" identifier="OrderConfirmationSegue" id="0YE-qd-Q9J"/>
                     </connections>
                 </tableViewController>
