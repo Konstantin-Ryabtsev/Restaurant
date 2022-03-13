@@ -107,11 +107,9 @@ extension OrderTableViewController /*: UITableViewDataSource */ {
             tableView.beginUpdates()
             let orderCount = OrderManager.shared.order.orderItems.count
             OrderManager.removeItem(at: indexPath.row)
-            
             if orderCount != OrderManager.shared.order.orderItems.count {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            
             tableView.endUpdates()
             updateUI()
         case .none:
