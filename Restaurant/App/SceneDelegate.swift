@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var orderTabBarItem: UITabBarItem!
     
     @objc func updateOrderBadge() {
-        let count = OrderManager.shared.order.menuItems.count
+        let count = OrderManager.shared.order.orderItems.reduce(0) { $0 + $1.count }
         orderTabBarItem.badgeValue = 0 < count ? ("\(count)") : nil
     }
 

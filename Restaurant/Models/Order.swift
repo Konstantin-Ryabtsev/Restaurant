@@ -8,9 +8,9 @@
 import Foundation
 
 struct Order {
-    var menuItems: [MenuItem]
+    var orderItems: [OrderItem]
     
-    init(menuItems: [MenuItem] = []) {
-        self.menuItems = menuItems
+    init(orderItems: [OrderItem] = []) {
+        self.orderItems = orderItems
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A10940027DE258A00C7DB3C /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1093FF27DE258A00C7DB3C /* OrderItem.swift */; };
 		0A33BA4E27D6B4CE000DD3F6 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA4D27D6B4CE000DD3F6 /* ItemViewController.swift */; };
 		0A33BA5027D6BAF7000DD3F6 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA4F27D6BAF7000DD3F6 /* OrderTableViewController.swift */; };
 		0A33BA5227D6BB52000DD3F6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33BA5127D6BB52000DD3F6 /* Order.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1093FF27DE258A00C7DB3C /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		0A33BA4D27D6B4CE000DD3F6 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		0A33BA4F27D6BAF7000DD3F6 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		0A33BA5127D6BB52000DD3F6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				0AD11C1627CDA895006D1236 /* MenuItems.swift */,
 				0A33BA5127D6BB52000DD3F6 /* Order.swift */,
 				0A33BA5927D7C685000DD3F6 /* PreparationTime.swift */,
+				0A1093FF27DE258A00C7DB3C /* OrderItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,7 +178,6 @@
 				0AD11BEB27CD9723006D1236 /* Sources */,
 				0AD11BEC27CD9723006D1236 /* Frameworks */,
 				0AD11BED27CD9723006D1236 /* Resources */,
-				0A33BA5B27D7CDB6000DD3F6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -232,26 +234,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0A33BA5B27D7CDB6000DD3F6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# ${SRCROOT}/swiftScript.swift argumentOne argumentTwo\n\nTAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		0AD11BEB27CD9723006D1236 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -268,6 +250,7 @@
 				0A33BA5027D6BAF7000DD3F6 /* OrderTableViewController.swift in Sources */,
 				0AD11C0F27CD9ED9006D1236 /* NetworkManager.swift in Sources */,
 				0AD11C1327CDA6C1006D1236 /* CellManager.swift in Sources */,
+				0A10940027DE258A00C7DB3C /* OrderItem.swift in Sources */,
 				0AD11C0C27CD9E19006D1236 /* Categories.swift in Sources */,
 				0AD11C1A27CDAB6A006D1236 /* URL+Extension.swift in Sources */,
 				0AD11C1127CDA21D006D1236 /* CategoryTableViewController.swift in Sources */,

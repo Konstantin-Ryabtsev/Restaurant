@@ -8,9 +8,9 @@
 import Foundation
 
 struct PreparationTime: Codable {
-    let prepTime: Int
+    let preparationTime: Int
     
     enum CodingKeys: String, CodingKey {
-        case prepTime = "preparation_time"
+        case preparationTime = "preparation_time"
     }
 }

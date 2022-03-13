@@ -36,4 +36,13 @@ class CellManager {
             }
         }
     }
+    
+    func configure(_ cell: UITableViewCell, with orderItem: OrderItem, for tableView: UITableView, indexPath: IndexPath) {
+        cell.textLabel?.text = orderItem.name
+        cell.detailTextLabel?.text = "\(orderItem.count) X \(orderItem.price.formattedHundreds)"
+        
+        if let image = orderItem.image {
+            cell.imageView?.image = image
+        }
+    }
 }

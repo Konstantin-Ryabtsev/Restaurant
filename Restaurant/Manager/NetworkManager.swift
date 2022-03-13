@@ -98,7 +98,7 @@ class NetworkManager {
                 completion(nil, nil)
                 return
             }
-            completion(preparationTime.prepTime, nil)
+            completion(preparationTime.preparationTime, nil)
         }
         task.resume()
     }

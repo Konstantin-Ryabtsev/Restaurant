@@ -40,16 +40,23 @@ class OrderTableViewController: UITableViewController {
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         OrderManager.shared.order = Order()
+        updateUI()
     }
     
     // MARK: - Custom Methods
     func updateUI() {
-        submitButton.isEnabled = OrderManager.shared.order.menuItems.count > 0
+        submitButton.isEnabled = OrderManager.shared.order.orderItems.count > 0
     }
     
     func uploadOrder() {
-        let menuIds = OrderManager.shared.order.menuItems.map { $0.id }
-        networkManager.submitOrder(forMenuIds: menuIds) { minutes, error in
+        var orderIds: [Int] = []
+        for orderItem in OrderManager.shared.order.orderItems {
+            for _ in 1 ... orderItem.count {
+                orderIds.append(orderItem.id)
+            }
+        }
+        
+        networkManager.submitOrder(forMenuIds: orderIds) { minutes, error in
             if let error = error {
                 print(#line, #function, "ERROR: \(error.localizedDescription)")
             } else {
@@ -61,12 +68,13 @@ class OrderTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "OrderConfirmationSegue", sender: nil)
                 }
-            }	        }
+            }
+        }
     }
     
     // MARK: - Actions
     @IBAction func submitTapped(_ sender: UIBarButtonItem) {
-        let orderTotal = OrderManager.shared.order.menuItems.reduce(0) { $0 + $1.price }
+        let orderTotal = OrderManager.shared.order.orderItems.reduce(0) { $0 + Double($1.count) * $1.price }
         
         let alert = UIAlertController(
             title: "Confirm Order",
@@ -83,13 +91,13 @@ class OrderTableViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension OrderTableViewController /*: UITableViewDataSource */ {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OrderManager.shared.order.menuItems.count
+        return OrderManager.shared.order.orderItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath)
-        let menuItem = OrderManager.shared.order.menuItems[indexPath.row]
-        cellManager.configure(cell, with: menuItem, for: tableView, indexPath: indexPath)
+        let orderItem = OrderManager.shared.order.orderItems[indexPath.row]
+        cellManager.configure(cell, with: orderItem, for: tableView, indexPath: indexPath)
         return cell
     }
     
@@ -97,8 +105,13 @@ extension OrderTableViewController /*: UITableViewDataSource */ {
         switch editingStyle {
         case .delete:
             tableView.beginUpdates()
-            OrderManager.shared.order.menuItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let orderCount = OrderManager.shared.order.orderItems.count
+            OrderManager.removeItem(at: indexPath.row)
+            
+            if orderCount != OrderManager.shared.order.orderItems.count {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
             tableView.endUpdates()
             updateUI()
         case .none:
